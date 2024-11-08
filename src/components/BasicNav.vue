@@ -6,6 +6,14 @@ import CartOutline from 'vue-material-design-icons/CartOutline.vue';
 import AccountOutline from 'vue-material-design-icons/AccountOutline.vue';
 
 import BasicBtn from './BasicBtn.vue';
+
+import { ref } from 'vue'
+
+const showAcc = ref(false)
+
+function isLogin (){
+  showAcc.value = true
+}
 </script>
 
 <template>
@@ -20,23 +28,32 @@ import BasicBtn from './BasicBtn.vue';
         <h1 class="text-4xl font-bold">VueCartel</h1>
       </router-link>
 
-      <div class="flex items-center justify-between w-1/3 bg-gray-200 rounded h-12 pl-4 overflow-hidden">
-        <input type="text" placeholder="what are you looking for?" class="outline-none bg-transparent ">
-        <BasicBtn to="/search" label="Search">
-          <Magnify  fill-color="#fff" class=""/>
-        </BasicBtn>
+      <div class="flex items-center gap-3 ">
+      <div class="flex items-center bg-gray-100 w-[25rem] rounded h-12 px-4 overflow-hidden ">
+        <input type="text" placeholder="what are you looking for?" class="w-full outline-none bg-transparent ">
       </div>
+      <BasicBtn to="/search" label="Search">
+        <Magnify  fill-color="#fff" class=""/>
+      </BasicBtn>
+    </div>
      
       <div class="flex items-center gap-4">
-        <router-link class="hover:bg-red-500 hover:rounded-full p-1 hover:text-white">
+        <router-link to="/wishlist" class="hover:bg-red-500 hover:rounded-full p-1 hover:text-white">
           <HeartOutline />
         </router-link>
-        <router-link class="hover:bg-red-500 hover:rounded-full p-1 hover:text-white">
+        <router-link to="/cart" class="hover:bg-red-500 hover:rounded-full p-1 hover:text-white">
           <CartOutline />
         </router-link>
-        <router-link class="hover:bg-red-500 hover:rounded-full p-1 hover:text-white">
+
+        <router-link v-if="showAcc" to="" class="hover:bg-red-500 hover:rounded-full p-1 hover:text-white">
           <AccountOutline />
         </router-link>
+
+        <div v-if="!showAcc" @click="isLogin">
+          <BasicBtn bg="bg-black" link="/signup"  >
+            <p class="text-white -ml-3 ">Sign Up</p>
+          </BasicBtn>
+        </div>
     </div>
   </div>
   </div>

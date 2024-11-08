@@ -1,4 +1,5 @@
-[
+ 
+ const heroSlides = [
   {
     "name":" Smart Phones",
     "title": "Get 50% off all Samsung A series",
@@ -20,3 +21,11 @@
     "image" : "../src/assets/gamepad.png"
   }
 ]
+
+
+
+ 
+
+
+export default 
+  heroSlides
