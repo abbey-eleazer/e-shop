@@ -1,6 +1,20 @@
 <script setup>
+import { ref } from 'vue';
 import BasicBtn from './BasicBtn.vue';
 import TrashCanOutline from 'vue-material-design-icons/TrashCanOutline.vue';
+
+let numberOfItem = ref(0)
+ const handleAddItem = () =>{
+  numberOfItem.value += 1
+ }
+
+ const handleRemoveItem = () =>{
+  if(numberOfItem.value > 0) {
+    numberOfItem.value -= 1
+  } else {
+    return numberOfItem.value
+  }
+ }
 </script>
 
 <template>
@@ -20,9 +34,9 @@ import TrashCanOutline from 'vue-material-design-icons/TrashCanOutline.vue';
             Remove
         </BasicBtn>
           <div class="flex items-center justify-between w-40 h-12 rounded-md border overflow-hidden">
-            <button class="w-10 h-full border text-4xl hover:bg-red-500 hover:text-white">-</button>
-            <p class="text-xl">2</p>
-            <button class="w-10 h-full border text-3xl hover:bg-red-500 hover:text-white ">+</button>
+            <button class="w-10 h-full border text-4xl hover:bg-red-500 hover:text-white" @click="handleRemoveItem">-</button>
+            <p class="text-xl" >{{numberOfItem}}</p>
+            <button @click="handleAddItem" class="w-10 h-full border text-3xl hover:bg-red-500 hover:text-white ">+</button>
           </div>
         </div>
       </div>

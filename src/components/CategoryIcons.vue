@@ -1,38 +1,26 @@
 <script setup>
 import BasicHeading from './BasicHeading.vue';
 
-const categories = [
-  {
-    "name":" Phones",
-    "image" : "../src/assets/Category-CellPhone.png",
-  },
-  {
-    "name":"Computers",
-    "image" : "../src/assets/Category-Computer.png",
+import { computed, onMounted, ref } from 'vue';
 
-  },
-  {
-    "name":"SmartWatch",
-    "image" : "../src/assets/Category-SmartWatch.png"
-  },
-  {
-    "name":" Camera",
-    "image" : "../src/assets/Category-Camera.png"
-  },
-  {
-    "name":" Gaming",
-    "image" : "../src/assets/Category-GamePad.png"
-  },
-  {
-    "name":" HeadPhones",
-    "image" : "../src/assets/Category-Headphone.png"
-  }
-]
+import axiosClient from '@/axiosClient';
+
+const categories = ref([]) 
+
+ onMounted(
+   async() => {
+    const res = await axiosClient.get('/categories')
+     categories.value = res.data
+    console.log(categories)
+  }  
+  )
+
+{{categories}}
 
 </script>
 
 <template>
-  <div class="container mx-auto my-24  border-b py-32">
+  <div class="container mx-auto my-24  border-b">
     <BasicHeading headliner="categories" heading="Browse by Category" />
    
     <div class="flex items-center justify-between">
@@ -40,7 +28,6 @@ const categories = [
         <div class="flex flex-col items-center
          justify-center">
           <img :src="category.image" alt="product image" class="flex justify-center hover:text-white"/>
-          {{category.icon}}  
           <div>
             <h3>{{ category.name }}</h3>  
           </div>  
