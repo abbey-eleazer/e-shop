@@ -51,7 +51,7 @@
           <div class="flex gap-4 pt-5">
             <img src="../assets/Icon-Facebook.png" alt="">
             <img src="../assets/Icon-Twitter.png" alt="">
-            <img src="../assets/icon-instagram.png" alt="">
+            <!-- <img src="../assets/icon-instagram.png" alt=""> -->
             <img src="../assets/Icon-Linkedin.png" alt="">
           </div>
       </div>
